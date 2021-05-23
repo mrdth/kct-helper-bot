@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
   const getLink = () => {
     apiClient.get('/temp-link').then((response) => {
       message.channel.send("Here's a link to view the guild bank. It's valid for the next 30 minutes:\n" + response.data.url)
-        .then(mgs => mgs.delete({ timeout: 10000 }))
+        .then(mgs => mgs.delete({ timeout: 30 * 60 * 1000 }))
         .catch(console.error);
     });
   };
